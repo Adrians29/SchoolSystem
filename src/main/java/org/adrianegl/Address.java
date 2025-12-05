@@ -7,4 +7,7 @@ public class Address {
     private Province province;
     private String postalCode;
 
+    public enum Province {
+        AB, BC, MB, NB, NL, NS, ON, PE, QC, SK
+    }
 }
