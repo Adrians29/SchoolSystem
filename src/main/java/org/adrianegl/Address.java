@@ -17,6 +17,20 @@ public class Address {
      * @return if the postcode is valid or not
      */
     private static boolean isPostalCodeValid(String postalCode) {
+        int len = postalCode.length();
+        if (len != 6) {
+            return false;
+        }
+        for (int i = 0; i < len; i += 2) {
+            char letter = postalCode.charAt(i);
+            char digit = postalCode.charAt(i + 1);
+            if (!Character.isLetter(letter) || !Character.isUpperCase(letter)) {
+                return false;
+            }
+            else if (!Character.isDigit(digit)) {
+                return false;
+            }
+        }
         return true;
     }
 }
