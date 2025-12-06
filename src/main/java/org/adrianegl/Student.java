@@ -7,7 +7,11 @@ public class Student {
     private Gender gender;
     private Address address;
     private Department department;
-    private Lis<Course> registeredCourses;
+    private List<Course> registeredCourses;
 
     private static int nextId;
+
+    public boolean registerCourse(Course course) {
+        return true;
+    }
 }
