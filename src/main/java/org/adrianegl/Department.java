@@ -6,6 +6,17 @@ public class Department {
 
     private static int nextId = 1;
 
+    public Department(String departmentName) {
+        if (isDepartmentNameValid(departmentName)) {
+            this.departmentId = String.format("D%02d", nextId++);
+            this.departmentName = departmentName;
+        }
+        else {
+            this.departmentId = null;
+            this.departmentName = null;
+        }
+    }
+
     /**
      * checks if a department name is valid or not
      * @param departmentName name should only contain letters or space
