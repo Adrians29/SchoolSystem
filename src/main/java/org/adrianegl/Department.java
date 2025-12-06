@@ -6,6 +6,11 @@ public class Department {
 
     private static int nextId = 1;
 
+    /**
+     * checks if a department name is valid or not
+     * @param departmentName name should only contain letters or space
+     * @return if department name is valid or not
+     */
     private static boolean isDepartmentNameValid(String departmentName) {
         if (departmentName == null || departmentName.isEmpty()) {
             return false;
