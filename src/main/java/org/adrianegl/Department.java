@@ -12,11 +12,8 @@ public class Department {
         }
 
         for (int i = 0; i < departmentName.length(); i++) {
-            char letter = departmentName.charAt(i);
-            if (!Character.isLetter(letter)) {
-                return false;
-            }
-            else if (!Character.isSpaceChar(letter)) {
+            char c = departmentName.charAt(i);
+            if (!Character.isLetter(c) && c != ' ') {
                 return false;
             }
         }
