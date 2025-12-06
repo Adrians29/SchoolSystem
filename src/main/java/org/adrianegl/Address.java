@@ -11,6 +11,14 @@ public class Address {
         AB, BC, MB, NB, NL, NS, ON, PE, QC, SK
     }
 
+    public Address(int streetNo, String street, String city, Province province, String postalCode) {
+        this.streetNo = streetNo;
+        this.street = street;
+        this.city = city;
+        this.province = province;
+        this.postalCode = postalCode;
+    }
+
     /**
      * Checks if a postcode is valid or not
      * @param postalCode the postcode that is going to be used with a length of 6
