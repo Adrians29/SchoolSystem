@@ -1,8 +1,13 @@
 package org.adrianegl;
 
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@Getter
 public class Department {
     private String departmentId;
-    private String departmentName;
+    @Setter private String departmentName;
 
     private static int nextId = 1;
 
