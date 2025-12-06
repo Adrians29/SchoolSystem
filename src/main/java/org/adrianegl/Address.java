@@ -1,5 +1,11 @@
 package org.adrianegl;
 
+import lombok.*;
+
+@ToString
+@EqualsAndHashCode
+@Getter
+@Setter
 public class Address {
     private int streetNo;
     private String street;
