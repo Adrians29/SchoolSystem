@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Student {
     private String studentId;
+    private String studentName;
     private Gender gender;
     private Address address;
     private Department department;
@@ -12,6 +13,8 @@ public class Student {
     private static int nextId;
 
     public boolean registerCourse(Course course) {
+        registeredCourses.add(course);
+        registeredStudents
         return true;
     }
 }
