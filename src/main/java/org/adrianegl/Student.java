@@ -1,5 +1,6 @@
 package org.adrianegl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
@@ -12,9 +13,20 @@ public class Student {
 
     private static int nextId;
 
+    /**
+     * adds a course to student's registeredCourses
+     * if the student is not registered yet.
+     * @param course the course that the student wants to register.
+     * @return if the student is registered or not.
+     */
     public boolean registerCourse(Course course) {
-        registeredCourses.add(course);
-        registeredStudents
+        if (registeredCourses.contains(course)) {
+            return false;
+        }
+        else {
+            registeredCourses.add(course);
+        }
         return true;
+
     }
 }
