@@ -29,4 +29,20 @@ public class Student {
         return true;
 
     }
+
+    /**
+     * remove the course from the student's registeredCourses list
+     * @param course the course that wants to remove
+     * @return if the course was removed or not
+     */
+    public boolean dropCourse(Course course) {
+        if (!registeredCourses.contains(course)) {
+            return false;
+        }
+        else {
+            registeredCourses.remove(course);
+        }
+        return true;
+
+    }
 }
