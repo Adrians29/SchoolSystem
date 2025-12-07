@@ -36,4 +36,13 @@ public class Assignment {
             default -> -1;
         };
     }
+
+    @Override
+    public String toString() {
+        return "Assignment{" +
+                "weight=" + weight +
+                ", assignmentName='" + assignmentName + '\'' +
+                ", assignmentId='" + assignmentId + '\'' +
+                '}';
+    }
 }
