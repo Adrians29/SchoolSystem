@@ -12,7 +12,7 @@ public class Assignment {
 
     /**
      * Calculates the avg score of the assignment
-     * @return
+     * @return the avg score
      */
     public double calcAssignmentAvg() {
         double sum = 0;
