@@ -11,7 +11,20 @@ public class Student {
     private Department department;
     private List<Course> registeredCourses;
 
-    private static int nextId;
+    private static int nextId = 1;
+
+    public enum Gender {
+        MALE, FEMALE
+    }
+
+    public Student(String studentName, Gender gender, Address address, Department department, List<Course> registeredCourses) {
+        this.studentId = String.format("S%06", nextId++);
+        this.studentName = studentName;
+        this.gender = gender;
+        this.address = address;
+        this.department = department;
+        this.registeredCourses = new ArrayList<>();
+    }
 
     /**
      * adds a course to student's registeredCourses
