@@ -11,4 +11,20 @@ public class Course {
     private List<Student> registeredStudents;
 
     private static int nextId = 1;
+
+    /**
+     * checks if the sum of weights of all assignments of that course equals to 100
+     * @return if the sum of weights equals to 100
+     */
+    public boolean isAssignmentWeightValid() {
+        double sum = 0;
+        for (Assignment assignment : assignments) {
+            double weight = assignment.getWeight();
+            sum += weight;
+        }
+        if (sum != 100) {
+            return false;
+        }
+        return true;
+    }
 }
