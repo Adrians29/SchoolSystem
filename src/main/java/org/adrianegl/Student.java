@@ -40,9 +40,8 @@ public class Student {
         if (registeredCourses.contains(course)) {
             return false;
         }
-        else {
-            registeredCourses.add(course);
-        }
+        registeredCourses.add(course);
+
         return true;
 
     }
