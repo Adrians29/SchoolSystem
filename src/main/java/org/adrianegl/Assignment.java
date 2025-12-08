@@ -11,6 +11,13 @@ public class Assignment {
 
     private static int nextId = 1;
 
+    public Assignment(String assignmentName, double weight) {
+        this.assignmentId = String.format("%02d", nextId++);
+        this.assignmentName = assignmentName;
+        this.weight = weight;
+        generateRandomScore();
+    }
+
     /**
      * Calculates the avg score of the assignment
      * @return the avg score
@@ -35,6 +42,7 @@ public class Assignment {
             case 9, 10 -> random.nextInt(90, 101);
             default -> -1;
         };
+        scores.add(randomScore);
     }
 
     @Override
