@@ -42,6 +42,12 @@ public class Student {
         }
         registeredCourses.add(course);
 
+        course.getRegisteredStudents().add(this);
+
+        for (Assignment assignment : course.getAssignments()) {
+            assignment.getScores().add(null);
+        }
+
         return true;
 
     }
