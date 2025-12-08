@@ -1,5 +1,6 @@
 package org.adrianegl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -11,11 +12,11 @@ public class Assignment {
 
     private static int nextId = 1;
 
-    public Assignment(String assignmentName, double weight) {
+    public Assignment(String assignmentName) {
         this.assignmentId = String.format("%02d", nextId++);
         this.assignmentName = assignmentName;
         this.weight = weight;
-        generateRandomScore();
+        this.scores = new ArrayList<>();
     }
 
     /**
@@ -31,14 +32,17 @@ public class Assignment {
         return sum / scores.size();
     }
 
+    /**
+     * generate a random score for scores list
+     */
     private void generateRandomScore() {
         Random random = new Random();
         int randomNum = random.nextInt(0, 11);
         int randomScore = switch (randomNum) {
-            case 0 -> random.nextInt(0, 61);
-            case 1, 2 -> random.nextInt(60, 71);
-            case 3, 4 -> random.nextInt(70, 81);
-            case 5, 6, 7, 8 -> random.nextInt(80, 91);
+            case 0 -> random.nextInt(0, 60);
+            case 1, 2 -> random.nextInt(60, 70);
+            case 3, 4 -> random.nextInt(70, 80);
+            case 5, 6, 7, 8 -> random.nextInt(80, 90);
             case 9, 10 -> random.nextInt(90, 101);
             default -> -1;
         };
@@ -48,9 +52,9 @@ public class Assignment {
     @Override
     public String toString() {
         return "Assignment{" +
-                "weight=" + weight +
+                "assignmentId=" + assignmentId + '\'' +
                 ", assignmentName='" + assignmentName + '\'' +
-                ", assignmentId='" + assignmentId + '\'' +
+                ", weight='" + weight +
                 '}';
     }
 }
