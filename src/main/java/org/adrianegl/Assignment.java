@@ -9,7 +9,7 @@ import java.util.Random;
 @Getter
 public class Assignment {
     private String assignmentId;
-    private String assignmentName;
+    @Setter private String assignmentName;
     private double weight;
     private List<Integer> scores;
 
@@ -28,6 +28,9 @@ public class Assignment {
      */
     public double calcAssignmentAvg() {
         double sum = 0;
+        if (scores.isEmpty()) {
+            return sum;
+        }
         for (double score : scores) {
             sum += score;
         }
