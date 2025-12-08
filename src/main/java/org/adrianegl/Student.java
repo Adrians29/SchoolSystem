@@ -1,8 +1,12 @@
 package org.adrianegl;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@EqualsAndHashCode
+@Getter
 public class Student {
     private String studentId;
     private String studentName;
@@ -18,7 +22,7 @@ public class Student {
     }
 
     public Student(String studentName, Gender gender, Address address, Department department, List<Course> registeredCourses) {
-        this.studentId = String.format("S%06", nextId++);
+        this.studentId = String.format("S%06d", nextId++);
         this.studentName = studentName;
         this.gender = gender;
         this.address = address;
@@ -57,5 +61,17 @@ public class Student {
         }
         return true;
 
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", gender=" + gender +
+                ", address=" + address +
+                ", department=" + department +
+                ", registeredCourses=" + registeredCourses +
+                '}';
     }
 }
