@@ -47,7 +47,6 @@ public class Student {
         for (Assignment assignment : course.getAssignments()) {
             assignment.getScores().add(null);
         }
-
         return true;
 
     }
@@ -61,9 +60,10 @@ public class Student {
         if (!registeredCourses.contains(course)) {
             return false;
         }
-        else {
-            registeredCourses.remove(course);
-        }
+        registeredCourses.remove(course);
+
+        course.getRegisteredStudents().remove(this);
+
         return true;
 
     }
