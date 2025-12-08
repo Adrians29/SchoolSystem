@@ -1,7 +1,10 @@
 package org.adrianegl;
 
+import lombok.*;
+
 import java.util.List;
 
+@Getter
 public class Course {
     private String courseId;
     private String courseName;
@@ -26,5 +29,9 @@ public class Course {
             return false;
         }
         return true;
+    }
+
+    public boolean registerStudent(Student student) {
+
     }
 }
