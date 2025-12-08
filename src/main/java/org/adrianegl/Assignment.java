@@ -1,9 +1,12 @@
 package org.adrianegl;
 
+import lombok.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@Getter
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
