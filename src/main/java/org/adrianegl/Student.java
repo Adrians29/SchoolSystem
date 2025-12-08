@@ -64,6 +64,11 @@ public class Student {
 
         course.getRegisteredStudents().remove(this);
 
+        for (Assignment assignment : course.getAssignments()) {
+            if (!assignment.getScores().isEmpty()) {
+                assignment.getScores().remove(assignment.getScores().size() - 1);
+            }
+        }
         return true;
 
     }
