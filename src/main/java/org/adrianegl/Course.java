@@ -23,10 +23,9 @@ public class Course {
     public boolean isAssignmentWeightValid() {
         double sum = 0;
         for (Assignment assignment : assignments) {
-            double weight = assignment.getWeight();
-            sum += weight;
+            sum += assignment.getWeight();
         }
-        return sum <= 100;
+        return sum == 100;
     }
 
     public boolean registerStudent(Student student) {
@@ -42,6 +41,27 @@ public class Course {
         finalScores.add(null);
 
         student.getRegisteredCourses().add(this);
+
         return true;
+    }
+
+    public int[] calcStudentsAverage() {
+        int size = registeredStudents.size();
+        int[] results = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            double avg = 0;
+            for (Assignment assignment : assignments) {
+                Integer score = assignment.getScores().get(i);
+
+                if (score != null) {
+                    avg += score * assignment.getWeight() / 100.0;
+                }
+            }
+
+            results[i] = (int) Math.round(avg);
+        }
+
+        return results;
     }
 }
