@@ -12,6 +12,7 @@ public class Course {
     private Department department;
     private List<Assignment> assignments;
     private List<Student> registeredStudents;
+    private List<Double> finalScores;
 
     private static int nextId = 1;
 
@@ -25,13 +26,22 @@ public class Course {
             double weight = assignment.getWeight();
             sum += weight;
         }
-        if (sum != 100) {
-            return false;
-        }
-        return true;
+        return sum <= 100;
     }
 
     public boolean registerStudent(Student student) {
+        if (registeredStudents.contains(student)) {
+            return false;
+        }
+        registeredStudents.add(student);
 
+        for (Assignment assignment : assignments) {
+            assignment.getScores().add(null);
+        }
+
+        finalScores.add(null);
+
+        student.getRegisteredCourses().add(this);
+        return true;
     }
 }
