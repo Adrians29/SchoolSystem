@@ -66,13 +66,17 @@ public class Course {
     }
 
     public boolean addAssignment(String assignmentName, double weight) {
-        assignments.add(new Assignment(assignmentName, weight, registeredStudents.size(), this));
+        Assignment newAssignment = new Assignment(assignmentName, weight);
+        assignments.add(newAssignment);
 
-        if (!isAssignmentWeightValid()) {
-            assignments.removeLast();
-            return false;
+        for (int i = 0; i < registeredStudents.size(); i++) {
+            newAssignment.getScores().add(null);
         }
-
         return true;
+
+    }
+
+    public void generateScores() {
+
     }
 }
