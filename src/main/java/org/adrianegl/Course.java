@@ -64,4 +64,15 @@ public class Course {
 
         return results;
     }
+
+    public boolean addAssignment(String assignmentName, double weight) {
+        assignments.add(new Assignment(assignmentName, weight, registeredStudents.size(), this));
+
+        if (!isAssignmentWeightValid()) {
+            assignments.removeLast();
+            return false;
+        }
+
+        return true;
+    }
 }
