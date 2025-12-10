@@ -18,7 +18,7 @@ public class Assignment {
     public Assignment(String assignmentName, double weight) {
         this.assignmentId = String.format("%02d", nextId++);
         this.assignmentName = assignmentName;
-        this.weight = Math.max(Math.min(100.0, weight), 0.0);
+        this.weight = weight;
         this.scores = new ArrayList<>();
     }
 
@@ -31,19 +31,19 @@ public class Assignment {
         if (scores.isEmpty()) {
             return sum;
         }
-        for (double score : scores) {
+        for (int score : scores) {
             sum += score;
         }
-
         return sum / scores.size();
     }
 
     /**
      * generate a random score for scores list
      */
-    private void generateRandomScore() {
+    public void generateRandomScore(int idx) {
         Random random = new Random();
         int randomNum = random.nextInt(0, 11);
+
         int randomScore = switch (randomNum) {
             case 0 -> random.nextInt(0, 60);
             case 1, 2 -> random.nextInt(60, 70);
@@ -52,7 +52,13 @@ public class Assignment {
             case 9, 10 -> random.nextInt(90, 101);
             default -> -1;
         };
-        scores.add(randomScore);
+
+        if (idx < scores.size()) {
+            scores.set(idx, randomScore);
+        }
+        else {
+            scores.add(randomScore);
+        }
     }
 
     @Override

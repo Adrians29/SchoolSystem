@@ -7,7 +7,7 @@ import java.util.List;
 @Getter
 public class Course {
     private String courseId;
-    private String courseName;
+    @Setter private String courseName;
     private double credits;
     private Department department;
     private List<Assignment> assignments;
@@ -77,6 +77,16 @@ public class Course {
     }
 
     public void generateScores() {
+        for (Assignment assignment : assignments) {
+            for (int i = 0; i < registeredStudents.size(); i++) {
+                assignment.generateRandomScore(i);
+            }
+        }
+
+        for (int i = 0; i < registeredStudents.size(); i++) {
+
+        }
+
 
     }
 }
