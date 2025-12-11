@@ -82,10 +82,6 @@ public class Course {
                 assignment.generateRandomScore(i);
             }
         }
-
-        for (int i = 0; i < registeredStudents.size(); i++) {
-
-        }
-
+        calcStudentsAverage();
     }
 }
