@@ -26,7 +26,7 @@ public class Address {
             this.postalCode = postalCode;
         }
         else {
-            this.streetNo = Integer.parseInt(null);
+            this.streetNo = 0;
             this.street = null;
             this.city = null;
             this.province = null;
@@ -41,13 +41,14 @@ public class Address {
      */
     private static boolean isPostalCodeValid(String postalCode) {
         int len = postalCode.length();
-        if (len != 6) {
+        if (postalCode == null || len != 6) {
             return false;
         }
         for (int i = 0; i < len; i += 2) {
             char letter = postalCode.charAt(i);
             char digit = postalCode.charAt(i + 1);
-            if (!Character.isLetter(letter) || !Character.isUpperCase(letter)) {
+            postalCode.toUpperCase();
+            if (!Character.isLetter(letter)) {
                 return false;
             }
             else if (!Character.isDigit(digit)) {
