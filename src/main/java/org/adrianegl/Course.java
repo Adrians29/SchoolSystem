@@ -100,5 +100,32 @@ public class Course {
         for (int i = 0; i < sizeAssignments; i++) {
             assignmentNames[i] = Util.toTitleCase(assignments.get(i).getAssignmentName());
         }
+
+        System.out.printf("Course: %s (%s)\n", courseName, courseId);
+        System.out.printf("%-30s", "");
+
+        for (String assignmentName : assignmentNames) {
+            System.out.printf("%-15s", assignmentName);
+        }
+
+        System.out.println("Final Score");
+
+        for (int i = 0; i < studentNames.length; i++) {
+            System.out.printf("%-30s", studentNames[i]);
+
+            for (int j = 0; j < assignmentNames.length; j++) {
+                System.out.printf("%-15d", assignments.get(j).getScores().get(i));
+            }
+
+            System.out.printf("%-15.0f\n", finalScores.get(i));
+        }
+
+        System.out.printf("%-30s", "Average");
+
+        for (Assignment assignment : assignments) {
+            System.out.printf("%-15.0f", assignment.calcAssignmentAvg());
+        }
+        System.out.println();
     }
+
 }
