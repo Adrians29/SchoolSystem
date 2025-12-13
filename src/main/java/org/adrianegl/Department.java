@@ -32,8 +32,7 @@ public class Department {
             return false;
         }
 
-        for (int i = 0; i < departmentName.length(); i++) {
-            char c = departmentName.charAt(i);
+        for (char c : departmentName.toCharArray()) {
             if (!Character.isLetter(c) && c != ' ') {
                 return false;
             }
