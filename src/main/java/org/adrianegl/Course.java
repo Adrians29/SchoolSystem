@@ -1,6 +1,7 @@
 package org.adrianegl;
 
 import lombok.*;
+import util.Util;
 
 import java.util.List;
 
@@ -83,5 +84,21 @@ public class Course {
             }
         }
         calcStudentsAverage();
+    }
+
+    void displayScores() {
+        int sizeStudents = registeredStudents.size();
+        int sizeAssignments = assignments.size();
+
+        String[] studentNames = new String[sizeStudents];
+        String[] assignmentNames = new String[sizeAssignments];
+
+        for (int i = 0; i < sizeStudents; i++) {
+            studentNames[i] = Util.toTitleCase(registeredStudents.get(i).getStudentName());
+        }
+
+        for (int i = 0; i < sizeAssignments; i++) {
+            assignmentNames[i] = Util.toTitleCase(assignments.get(i).getAssignmentName());
+        }
     }
 }
