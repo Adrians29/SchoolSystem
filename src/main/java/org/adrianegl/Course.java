@@ -2,6 +2,7 @@ package org.adrianegl;
 
 import lombok.*;
 import util.Util;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -21,6 +22,9 @@ public class Course {
         this.courseName = Util.toTitleCase(courseName.trim());
         this.credits = credits;
         this.department = department;
+        this.assignments = new ArrayList<>();
+        this.registeredStudents = new ArrayList<>();
+        this.finalScores = new ArrayList<>();
     }
 
     /**
@@ -57,27 +61,28 @@ public class Course {
         int[] results = new int[size];
 
         for (int i = 0; i < size; i++) {
-            double avg = 0;
+            double sum = 0;
             for (Assignment assignment : assignments) {
                 Integer score = assignment.getScores().get(i);
 
                 if (score != null) {
-                    avg += score * assignment.getWeight() / 100.0;
+                    sum += score * assignment.getWeight() / 100.0;
                 }
             }
 
-            results[i] = (int) Math.round(avg);
+            results[i] = (int) Math.round(sum);
+            finalScores.set(i, sum);
         }
 
         return results;
     }
 
     public boolean addAssignment(String assignmentName, double weight) {
-        Assignment newAssignment = new Assignment(assignmentName, weight);
-        assignments.add(newAssignment);
+        Assignment assignment = new Assignment(assignmentName, weight);
+        assignments.add(assignment);
 
         for (int i = 0; i < registeredStudents.size(); i++) {
-            newAssignment.getScores().add(null);
+            assignment.getScores().add(null);
         }
         return true;
 
@@ -92,7 +97,7 @@ public class Course {
         calcStudentsAverage();
     }
 
-    void displayScores() {
+     public void displayScores() {
         int sizeStudents = registeredStudents.size();
         int sizeAssignments = assignments.size();
 
@@ -108,16 +113,15 @@ public class Course {
         }
 
         System.out.printf("Course: %s (%s)\n", courseName, courseId);
-        System.out.printf("%-30s", "");
+        System.out.printf("%-25s", "");
 
         for (String assignmentName : assignmentNames) {
             System.out.printf("%-15s", assignmentName);
         }
-
-        System.out.println("Final Score");
+         System.out.printf("%-15s%n", "Final Score");
 
         for (int i = 0; i < studentNames.length; i++) {
-            System.out.printf("%-30s", studentNames[i]);
+            System.out.printf("%-25s", studentNames[i]);
 
             for (int j = 0; j < assignmentNames.length; j++) {
                 System.out.printf("%-15d", assignments.get(j).getScores().get(i));
@@ -126,7 +130,7 @@ public class Course {
             System.out.printf("%-15.0f\n", finalScores.get(i));
         }
 
-        System.out.printf("%-30s", "Average");
+        System.out.printf("%-25s", "Average");
 
         for (Assignment assignment : assignments) {
             System.out.printf("%-15.0f", assignment.calcAssignmentAvg());
@@ -134,4 +138,21 @@ public class Course {
         System.out.println();
     }
 
+    public String toSimplifiedString() {
+        return courseId + " - " + courseName +
+                " (" + credits + " credits, " +
+                department.getDepartmentName() + ")";
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseName='" + courseName + '\'' +
+                ", courseId='" + courseId + '\'' +
+                ", departmentName=" + department.getDepartmentName() +
+                ", assignments=" + assignments +
+                ", registeredStudents=" + registeredStudents +
+                ", isAssignmentWeightValid=" + isAssignmentWeightValid() +
+                '}';
+    }
 }
