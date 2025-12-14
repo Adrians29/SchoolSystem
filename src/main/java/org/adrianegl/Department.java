@@ -1,6 +1,7 @@
 package org.adrianegl;
 
 import lombok.*;
+import util.Util;
 
 @ToString
 @EqualsAndHashCode
@@ -11,10 +12,15 @@ public class Department {
 
     private static int nextId = 1;
 
+    /**
+     * Validates if a department name is valid or not, a department name should only contain letters or space
+     * Constructor with only `departmentName` // if the `departmentName` is invalid,
+     * create the object with everything as `null`
+     */
     public Department(String departmentName) {
         if (isDepartmentNameValid(departmentName)) {
             this.departmentId = String.format("D%02d", nextId++);
-            this.departmentName = departmentName;
+            this.departmentName = Util.toTitleCase(departmentName);
         }
         else {
             this.departmentId = null;
@@ -27,7 +33,7 @@ public class Department {
      * @param departmentName name should only contain letters or space
      * @return if department name is valid or not
      */
-    private static boolean isDepartmentNameValid(String departmentName) {
+    public static boolean isDepartmentNameValid(String departmentName) {
         if (departmentName == null || departmentName.isEmpty()) {
             return false;
         }
