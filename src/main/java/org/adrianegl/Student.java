@@ -25,7 +25,7 @@ public class Student {
         MALE, FEMALE
     }
 
-    public Student(String studentName, Gender gender, Address address, Department department, List<Course> registeredCourses) {
+    public Student(String studentName, Gender gender, Address address, Department department) {
         this.studentId = String.format("S%06d", nextId++);
         this.studentName = Util.toTitleCase(studentName);
         this.gender = gender;
