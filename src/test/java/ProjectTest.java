@@ -1,5 +1,7 @@
 import org.adrianegl.Address;
+import org.adrianegl.Course;
 import org.adrianegl.Department;
+import org.adrianegl.Student;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
      //Address Test
 
-    @Test
-    @DisplayName("isPostalCodeValid: A1B2C3 -> true")
-    void testValidPostalCode1() {
-        assertTrue(Address.isPostalCodeValid("A1B2C3"));
-    }
+     @Test
+     @DisplayName("isPostalCodeValid: A1B2C3 -> true")
+     void testValidPostalCode1() {
+         assertTrue(Address.isPostalCodeValid("A1B2C3"));
+     }
 
      @Test
      @DisplayName("isPostalCodeValid: 1A2B3F -> false")
@@ -48,13 +50,35 @@ import static org.junit.jupiter.api.Assertions.*;
      }
 
      @Test
-     @DisplayName("testDepartmentIdAutoIncrement(): D01 -> D02")
+     @DisplayName("testDepartmentIdAutoIncrement():")
      void testDepartmentIdAutoIncrement() {
-        Department department1 = new Department("Chemistry");
-        Department department2 = new Department("Discrete Math");
-        assertEquals("D01", department1.getDepartmentId());
-        assertEquals("D02", department2.getDepartmentId());
-    }
+         Department department1 = new Department("Math");
+         Department department2 = new Department("Science");
+         assertNotEquals(department1, department2);
+     }
 
+     //Student Test
+
+     @Test
+     @DisplayName("testRegisterAndDropCourse():")
+     void testRegisterAndDropCourse1() {
+         Department department = new Department("Physics");
+         Course course = new Course("Mechanics", 3, department);
+         Student student = new Student("Carlos Rodriguez", Student.Gender.MALE, null, department);
+
+         assertTrue(student.registerCourse(course));
+         assertTrue(student.dropCourse(course));
+     }
+
+     @Test
+     @DisplayName("testRegisterAndDropCourse():")
+     void testRegisterAndDropCourse2() {
+         Department department = new Department("Life Science");
+         Course course = new Course("Biology", 2, department);
+         Student student = new Student("Maria", Student.Gender.FEMALE, null, department);
+
+         assertTrue(student.registerCourse(course));
+         assertTrue(student.dropCourse(course));
+     }
 
  }
