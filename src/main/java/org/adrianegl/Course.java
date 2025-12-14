@@ -111,9 +111,7 @@ public class Course {
      */
     public void generateScores() {
         for (Assignment assignment : assignments) {
-            for (int i = 0; i < registeredStudents.size(); i++) {
-                assignment.generateRandomScore(i);
-            }
+                assignment.generateRandomScore();
         }
         calcStudentsAverage();
     }
