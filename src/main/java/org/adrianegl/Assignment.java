@@ -16,7 +16,7 @@ public class Assignment {
     private static int nextId = 1;
 
     public Assignment(String assignmentName, double weight) {
-        this.assignmentId = String.format("Assignment%02d", nextId++);
+        this.assignmentId = String.format("%02d", nextId++);
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.scores = new ArrayList<>();
@@ -40,7 +40,7 @@ public class Assignment {
     /**
      * generate a random score for scores list
      */
-    public void generateRandomScore(int idx) {
+    public void generateRandomScore() {
         Random random = new Random();
         int randomNum = random.nextInt(0, 11);
 
@@ -53,11 +53,8 @@ public class Assignment {
             default -> -1;
         };
 
-        if (idx < scores.size()) {
-            scores.set(idx, randomScore);
-        }
-        else {
-            scores.add(randomScore);
+        for (int i = 0; i < scores.size(); i++) {
+            scores.set(i, randomScore);
         }
     }
 
