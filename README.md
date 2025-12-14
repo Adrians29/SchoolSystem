@@ -13,9 +13,9 @@ The system allows the students to register and drop a course, and allow the teac
 
 This project, which simulates a school system, has the following capabilities:
 
-*Student can register course
-*Student can drop course
-*Courses can contain mutiple assignments with different weights
-*Scores can be generated randomly for testing purposes
-*The system can calculate weighted final Scores
-*Course can display results in a table 
+* Student can register course
+* Student can drop course
+* Courses can contain mutiple assignments with different weights
+* Scores can be generated randomly for testing purposes
+* The system can calculate weighted final Scores
+* Course can display results in a table 
