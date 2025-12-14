@@ -1,6 +1,7 @@
 import org.adrianegl.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import util.Util;
 
 import java.util.List;
 
@@ -104,7 +105,7 @@ class ProjectTest {
         assertNotNull(assignment.getScores().get(1));
     }
 
-    //Course Class
+    //Course Test
 
     @Test
     @DisplayName("testAssignmentWeightValidation: 30, 70 -> true")
@@ -161,5 +162,25 @@ class ProjectTest {
         assertEquals(2, course.getFinalScores().size());
         assertNotNull(course.getFinalScores().get(0));
         assertNotNull(course.getFinalScores().get(1));
+    }
+
+    //Util Test
+
+    @Test
+    @DisplayName("toTitleCase:    diScrete MaTH -> Discrete Math")
+    void testUtilTitleCase1() {
+        assertEquals("Discrete Math", Util.toTitleCase("   diScrete MaTH"));
+    }
+
+    @Test
+    @DisplayName("toTitleCase: mechanics -> Mechanics")
+    void testUtilTitleCase2() {
+        assertEquals("Mechanics", Util.toTitleCase("mechanics"));
+    }
+
+    @Test
+    @DisplayName("toTitleCase: Biology -> Biology")
+    void testUtilTitleCase3() {
+        assertEquals("Biology", Util.toTitleCase("Biology"));
     }
 }
