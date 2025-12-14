@@ -39,15 +39,16 @@ public class Address {
      * @param postalCode the postcode that is going to be used with a length of 6
      * @return if the postcode is valid or not
      */
-    private static boolean isPostalCodeValid(String postalCode) {
+    public static boolean isPostalCodeValid(String postalCode) {
         int len = postalCode.length();
         if (postalCode == null || len != 6) {
             return false;
         }
+
+        postalCode = postalCode.toUpperCase();
         for (int i = 0; i < len; i += 2) {
             char letter = postalCode.charAt(i);
             char digit = postalCode.charAt(i + 1);
-            postalCode.toUpperCase();
             if (!Character.isLetter(letter)) {
                 return false;
             }
