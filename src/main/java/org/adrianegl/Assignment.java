@@ -16,7 +16,7 @@ public class Assignment {
     private static int nextId = 1;
 
     public Assignment(String assignmentName, double weight) {
-        this.assignmentId = String.format("%02d", nextId++);
+        this.assignmentId = String.format("Assignment%02d", nextId++);
         this.assignmentName = assignmentName;
         this.weight = weight;
         this.scores = new ArrayList<>();
