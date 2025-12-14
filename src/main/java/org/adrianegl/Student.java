@@ -18,13 +18,16 @@ public class Student {
 
     private static int nextId = 1;
 
+    /**
+     * Possible genders for student
+     */
     public enum Gender {
         MALE, FEMALE
     }
 
     public Student(String studentName, Gender gender, Address address, Department department, List<Course> registeredCourses) {
         this.studentId = String.format("S%06d", nextId++);
-        this.studentName = Util.toTitleCase(studentName.trim());
+        this.studentName = Util.toTitleCase(studentName);
         this.gender = gender;
         this.address = address;
         this.department = department;
@@ -72,6 +75,14 @@ public class Student {
         }
         return true;
 
+    }
+
+    public String toSimplifiedString() {
+        return "Student{" +
+                "studentId=" + studentId + '\'' +
+                "studentName=" + studentName + '\'' +
+                "department=" + department +
+                '}';
     }
 
     @Override
