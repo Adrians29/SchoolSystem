@@ -90,4 +90,17 @@ class ProjectTest {
 
         assertEquals(85, assignment.calcAssignmentAvg());
     }
+
+    @Test
+    @DisplayName("testGenerateRandomScore")
+    void testGenerateRandomScore() {
+        Assignment assignment = new Assignment("Quiz", 30);
+        assignment.getScores().add(null);
+        assignment.getScores().add(null);
+
+        assignment.generateRandomScore();
+
+        assertNotNull(assignment.getScores().get(0));
+        assertNotNull(assignment.getScores().get(1));
+    }
 }
